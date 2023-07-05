@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--表明这个应用程序在 Wear OS 设备上运行-->
+    <uses-feature android:name="android.hardware.type.watch" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        <!--该应用程序可以在没有配对的手机应用程序的情况下运行，因此定义独立应用,
+        参考: https://developer.android.com/training/wearables/apps/standalone-apps?hl=zh-cn
+        -->
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <activity android:name="cn.blogss.wearos.MainActivity"
+            android:exported="true"
+            android:configChanges="keyboardHidden">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+
+        <!--注册功能块服务-->
+        <service android:name="cn.blogss.wearos.tile.MyTileService"
+            android:label="@string/my_tile"
+            android:description="@string/my_tile"
+            android:exported="true"
+            android:permission="com.google.android.wearable.permission.BIND_TILE_PROVIDER">
+            <intent-filter>
+                <action android:name="androidx.wear.tiles.action.BIND_TILE_PROVIDER"/>
+            </intent-filter>
+
+            <meta-data android:name="androidx.wear.tiles.PREVIEW"
+                android:resource="@drawable/common_full_open_on_phone"/>
+        </service>
+    </application>
+</manifest>
