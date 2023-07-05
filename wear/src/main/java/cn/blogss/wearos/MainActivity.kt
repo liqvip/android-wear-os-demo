@@ -1,10 +1,8 @@
 package cn.blogss.wearos
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.wear.widget.DismissibleFrameLayout
-import cn.blogss.wearos.demo.databinding.LayoutMainActivityBinding
+import cn.blogss.wearos.databinding.LayoutMainActivityBinding
 
 class MainActivity: AppCompatActivity() {
     private lateinit var vb: LayoutMainActivityBinding
